@@ -1,15 +1,16 @@
 h1 {
-  width: 172px;
+/*  width: 172px;*/
   height: 40px;
   font-family: Futura;
-  font-size: 60px;
+  font-size: 70px;
   font-weight: bold;
   line-height: 1.54;
   letter-spacing: -1.6px;
   color: #000000;
   margin: auto;
-  margin-bottom: 30px !important;
-   margin-top: 30px !important;
+  margin-bottom: 80px !important;
+   margin-top: 80px !important;
+  text-align:center
 
 }
 
@@ -17,7 +18,7 @@ h2 {
   width: 172px;
   height: 40px;
   font-family: Futura;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: bold;
   line-height: 1.54;
   letter-spacing: -1.6px;
@@ -26,9 +27,26 @@ h2 {
 }
 
 
+h3 {
+  width: 172px;
+  height: 40px;
+  font-family: Futura;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 1.54;
+  letter-spacing: -1.6px;
+  color: #000000;
+  margin-left: 50px;
+}
+
+
+.filtering {
+  float: left;
+}
+
 canvas {
   margin: auto;
-  text-align:center
+  text-align:center;
 }
 
 
@@ -41,7 +59,8 @@ canvas {
 
 
 .custom-dropdown{
-  margin-bottom: 70px !important;
+    margin-top: 10px !important;
+  margin-bottom: 10px !important;
 }
 
 .small {
@@ -54,7 +73,7 @@ canvas {
   height: .7em;
   margin: .5em;
   display: inline-block;
-   margin: 20px;
+/*   margin: 40px;*/
 }
 
 /* Custom dropdown */
@@ -62,7 +81,7 @@ canvas {
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  margin: 60px;
+/*  margin: 70px;*/
 }
 
 input:focus,
@@ -74,6 +93,7 @@ button:focus {
 
 .custom-dropdown select {
   background-color: black;
+    display: inline-block;
   color: white;
     font-family: Futura;
   font-size: inherit;
