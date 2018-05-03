@@ -1,47 +1,84 @@
 <html>
 
-
 <head>
-  <title>Face2Race</title>
-<!--   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
-  <link rel="stylesheet" href="style.css">
-  
+    <title>Face2Race</title>
+    <!--   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
-  
-  <h1>Face2Race<h1>
-    <span class="custom-dropdown small">
+    <h1>Face2Race<h1>
+    <div class="custom-dropdown small">
+
     <select id="mySelect" onchange="show()">
         <option value=all>All</option>
         <option value="equal">Equal</option>
         <option value="proportional">Proportional</option>
+        <option value="congress">Congress</option>
         <option value="asian">Asian</option>
         <option value="black">Black</option>
         <option value="white">White</option>
-    </select>
-    </span>
+</select>
+
+    <select id="mySelect2" onchange="hideAll()">
+        <option value="asian">Asian</option>
+        <option value="black">Black</option>
+        <option value="white">White</option>
+</select>
+
+    </div>
 
 
-    <h2>Equally Distributed</h2>
-    <div id="equal"></div>
-    <h2>Proportional to the US</h2>
-    <div id="proportional"></div>
-    <h2>Asian</h2>
+
+    <h2 id="equal">Equally Distributed</h2>
+    <div id="equal-hi"></div>
+
+    <h2 id="proportional">Proportional to the US</h2>
+    <div id="proportional-hi"></div>
+
+    <h2 id="asian">Asian</h2>
     <div id="asian-lo"></div>
     <div id="asian-hi"></div>
-    <h2>Black</h2>
+
+    <h2 id="black">Black</h2>
     <div id="black-lo"></div>
     <div id="black-hi"></div>
-    <h2>White</h2>
+
+    <h2 id="white">White</h2>
     <div id="white-lo"></div>
     <div id="white-hi"></div>
-    <h2>Congress</h2>
-    <div id="congress"></div>
+
+    <h2 id="congress">Congress</h2>
+    <div id="congress-hi"></div>
     <script src="deeplearn-0.3.15.js"></script>
     <script>
+
+
     var list = ["equal", "proportional", "congress", "asian", "black", "white"]
+
+
+    var hideAll = function() {
+
+        console.log("hideall")
+        for (var i = 0; i < list.length; i++) {
+                if (list[i] === "equal" || list[i] === "proportional" || list[i] === "congress") {
+                    var element = document.getElementById(list[i])
+                    element.style.display = 'none';
+                    var element2 = document.getElementById(list[i] + "-hi")
+                        element2.style.display = 'none';
+                } else {
+
+                    var element = document.getElementById(list[i] + "-lo")
+                    element.style.display = 'none';
+
+                    var element2 = document.getElementById(list[i] + "-hi")
+                    element2.style.display = 'none';
+
+                      var element3 = document.getElementById(list[i])
+                    element3.style.display = 'none';
+                }
+            }
+    }
 
     var show = function() {
 
@@ -52,12 +89,18 @@
                 if (list[i] === "equal" || list[i] === "proportional" || list[i] === "congress") {
                     var element = document.getElementById(list[i])
                     element.style.display = 'block';
+                    var element2 = document.getElementById(list[i] + "-hi")
+                        element2.style.display = 'block';
                 } else {
+
                     var element = document.getElementById(list[i] + "-lo")
                     element.style.display = 'block';
 
                     var element2 = document.getElementById(list[i] + "-hi")
                     element2.style.display = 'block';
+
+                      var element3 = document.getElementById(list[i])
+                    element3.style.display = 'block';
                 }
             }
         } else {
@@ -65,13 +108,18 @@
                 if (name === list[i]) {
                     if (list[i] === "equal" || list[i] === "proportional" || list[i] === "congress") {
                         var element = document.getElementById(list[i])
-                        element.style.display = 'block';
+                        element.style.display = 'none';
+                         var element2 = document.getElementById(list[i]+ "-hi")
+                        element2.style.display = 'block';
                     } else {
                         var element = document.getElementById(list[i] + "-lo")
                         element.style.display = 'block';
 
                         var element2 = document.getElementById(list[i] + "-hi")
                         element2.style.display = 'block';
+
+                         var element3 = document.getElementById(list[i])
+                        element3.style.display = 'none';
                     }
                 }
 
@@ -80,15 +128,53 @@
                     if (list[i] === "equal" || list[i] === "proportional" || list[i] === "congress") {
                         var element = document.getElementById(list[i])
                         element.style.display = 'none';
+                          var element2 = document.getElementById(list[i]+ "-hi")
+                        element2.style.display = 'none';
                     } else {
                         var element = document.getElementById(list[i] + "-lo")
                         element.style.display = 'none';
                         var element2 = document.getElementById(list[i] + "-hi")
                         element2.style.display = 'none';
+                          var element3 = document.getElementById(list[i])
+                        element3.style.display = 'none';
                     }
                 }
             }
         }
+
+    }
+
+    var show2 = function() {
+
+         var name = document.getElementById("mySelect").value;
+
+        hideAll()
+
+            if (name === "asian") {
+            for (var i = 0; i < list.length; i++) {
+                if (list[i] === "equal" || list[i] === "proportional" || list[i] === "congress") {
+                    var element = document.getElementById(list[i])
+                    element.style.display = 'block';
+                    var element2 = document.getElementById(list[i] + "-hi")
+                        element2.style.display = 'block';
+                } else {
+
+                    var element = document.getElementById(list[i] + "-lo")
+                    element.style.display = 'block';
+
+                    var element2 = document.getElementById(list[i] + "-hi")
+                    element2.style.display = 'block';
+
+                      var element3 = document.getElementById(list[i])
+                    element3.style.display = 'block';
+                }
+            }
+        }
+
+        // var training = document.getElementById("mySelect").value;
+        // var name = document.getElementById("mySelect2").value;
+        // if (name =)
+
 
     }
 
@@ -104,6 +190,9 @@
     var editors = []
     var request_in_progress = false
 
+
+
+
     function main() {
         var create_editor = function(config) {
             var editor = new Editor(config)
@@ -114,7 +203,7 @@
 
         // MODEL: Equal
         create_editor({
-            name: "equal",
+            name: "equal-hi",
             weights_url: "./models/equal.bin",
             mode: "line",
             clear: "#FFFFFF",
@@ -131,7 +220,7 @@
 
         // MODEL: Proportional
         create_editor({
-            name: "proportional",
+            name: "proportional-hi",
             weights_url: "./models/proportional.bin",
             mode: "line",
             clear: "#FFFFFF",
@@ -147,7 +236,7 @@
 
         // MODEL: congress
         create_editor({
-            name: "congress",
+            name: "congress-hi",
             weights_url: "/models/congress.bin",
             mode: "line",
             clear: "#FFFFFF",
@@ -266,6 +355,21 @@
             // sheet_url: "/edges2shoes-sheet.jpg",
         })
 
+        create_editor({
+            name: "equal-hi",
+            weights_url: "./models/equal.bin",
+            mode: "line",
+            clear: "#FFFFFF",
+            colors: {
+                line: "#000000",
+                eraser: "#ffffff",
+            },
+            draw: "#000000",
+            initial_input: "./inputs/asianF.jpg",
+            initial_output: "./outputs/asianF.jpg",
+            // sheet_url: "/edges2cats-sheet.jpg",
+        })
+
 
         // create_editor({
         //   name: "facades",
@@ -287,13 +391,16 @@
         //   },
         //   clear: "#0d3dfb",
         //   draw: "#0075ff",
-        //   initial_input: "/facades-input.png",
+        //    initial_input: "/facades-input.png",
         //   initial_output: "/facades-output.png",
         //   sheet_url: "/facades-sheet.jpg",
         // })
 
         window.requestAnimationFrame(frame)
     }
+
+
+
     window.onload = main
 
     function render() {
@@ -301,6 +408,12 @@
             editors[i].render()
         }
     }
+
+
+
+
+
+   console.log(editors)
 
 
     // model
