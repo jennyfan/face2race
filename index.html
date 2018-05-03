@@ -21,6 +21,7 @@
 </select>
 
     <select id="mySelect2" onchange="show2()">
+         <option value="choose">Select</option>
         <option value="asian">Asian</option>
         <option value="black">Black</option>
         <option value="white">White</option>
@@ -73,6 +74,13 @@
     <div class="drawing" id="white-asian-hi"></div>
     <div class="drawing" id="white-asian-lo"></div>
 
+    <div class="drawing" id="black-black-hi"></div>
+    <div class="drawing" id="black-black-lo"></div>
+    <div class="drawing" id="black-white-hi"></div>
+    <div class="drawing" id="black-white-lo"></div>
+    <div class="drawing" id="black-asian-hi"></div>
+    <div class="drawing" id="black-asian-lo"></div>
+
 
     <script src="deeplearn-0.3.15.js"></script>
     <script>
@@ -80,7 +88,17 @@
 
     var list = ["equal", "proportional", "congress", "asian", "black", "white"]
     var filterList = {asian: ["asian-asian-lo", "asian-asian-hi", "asian-white-hi", "asian-white-lo", "asian-black-lo", "asian-black-hi"],
-                        white: ["white-white-lo", "white-white-hi", "white-asian-hi", "white-asian-lo", "white-black-lo", "white-black-hi"]}
+                        white: ["white-white-lo", "white-white-hi", "white-asian-hi", "white-asian-lo", "white-black-lo", "white-black-hi"],
+                    black: ["black-black-lo", "black-black-hi", "black-asian-hi", "black-asian-lo", "black-white-lo", "black-white-hi"]}
+
+
+
+
+function SelectElement(id, valueToSelect)
+{    
+    var element = document.getElementById(id);
+    element.value = valueToSelect;
+}
 
 
     var hideAll = function() {
@@ -117,10 +135,16 @@
               var element = document.getElementById(filterList.white[i])
             element.style.display = 'none';
 
+                   var element = document.getElementById(filterList.black[i])
+            element.style.display = 'none';
+
     }
 }
 
     var show = function() {
+        SelectElement("mySelect2", "choose")
+
+        hideAllFilter()
 
         var name = document.getElementById("mySelect").value;
 
@@ -233,20 +257,118 @@
 
         hideAll()
 
-        if (name === "asian") {
+            if (name === "asian") {
 
-            if (filter === "white") { 
+                if (filter === "white") { 
+                    hideAllFilter()
 
-            var element = document.getElementById("asian-white-lo")
-            element.style.display = 'block';
+                var element = document.getElementById("asian-white-lo")
+                element.style.display = 'block';
+                var element = document.getElementById("asian-white-hi")
+                element.style.display = 'block';
 
-            var element = document.getElementById("asian-white-hi")
-            element.style.display = 'block';
-
-                }
             }
-                
+
+            if (filter === "black") { 
+                  hideAllFilter()
+                var element = document.getElementById("asian-black-lo")
+                element.style.display = 'block';
+                var element = document.getElementById("asian-black-hi")
+                element.style.display = 'block';
+
+            }
+
+
+
+            if (filter === "asian") { 
+                 hideAllFilter()
+                var element = document.getElementById("asian-asian-lo")
+                element.style.display = 'block';
+                var element = document.getElementById("asian-asian-hi")
+                element.style.display = 'block';
+
+            }
+
         }
+
+
+
+
+        if (name === "white") {
+
+                if (filter === "white") { 
+                    hideAllFilter()
+
+                var element = document.getElementById("white-white-lo")
+                element.style.display = 'block';
+                var element = document.getElementById("white-white-hi")
+                element.style.display = 'block';
+
+            }
+
+            if (filter === "black") { 
+                  hideAllFilter()
+                var element = document.getElementById("white-black-lo")
+                element.style.display = 'block';
+                var element = document.getElementById("white-black-hi")
+                element.style.display = 'block';
+
+            }
+
+
+
+            if (filter === "asian") { 
+                 hideAllFilter()
+                var element = document.getElementById("white-asian-lo")
+                element.style.display = 'block';
+                var element = document.getElementById("white-asian-hi")
+                element.style.display = 'block';
+
+            }
+
+        }
+
+
+                if (name === "black") {
+
+                if (filter === "white") { 
+                    hideAllFilter()
+
+                var element = document.getElementById("black-white-lo")
+                element.style.display = 'block';
+                var element = document.getElementById("black-white-hi")
+                element.style.display = 'block';
+
+            }
+
+            if (filter === "black") { 
+                  hideAllFilter()
+                var element = document.getElementById("black-black-lo")
+                element.style.display = 'block';
+                var element = document.getElementById("black-black-hi")
+                element.style.display = 'block';
+
+            }
+
+
+
+            if (filter === "asian") { 
+                 hideAllFilter()
+                var element = document.getElementById("black-asian-lo")
+                element.style.display = 'block';
+                var element = document.getElementById("black-asian-hi")
+                element.style.display = 'block';
+
+            }
+
+        }
+
+
+
+
+
+                
+    }
     
 
 
@@ -293,8 +415,8 @@
                 eraser: "#ffffff",
             },
             draw: "#000000",
-            initial_input: "./inputs/asianF.jpg",
-            initial_output: "./outputs/asianF.jpg",
+            initial_input: "./inputs/hispanicM.jpg",
+            initial_output: "./outputs/hispanicM.jpg",
             // sheet_url: "/edges2cats-sheet.jpg",
         })
 
@@ -310,8 +432,8 @@
                 eraser: "#ffffff",
             },
             draw: "#000000",
-            initial_input: "./inputs/asianF.jpg",
-            initial_output: "./outputs/asianF.jpg",
+            initial_input: "./inputs/whiteF.jpg",
+            initial_output: "./outputs/whiteF.jpg",
             // sheet_url: "/edges2cats-sheet.jpg",
         })
 
@@ -326,8 +448,8 @@
                 eraser: "#ffffff",
             },
             draw: "#000000",
-            initial_input: "./inputs/asianF.jpg",
-            initial_output: "./outputs/asianF.jpg",
+            initial_input: "./inputs/congressM1.jpg",
+            initial_output: "./outputs/congressM1.png",
             // initial_input: "./inputs/asianF.jpg",
             // initial_output: "./outputs/asianF.jpg",
             // sheet_url: "/edges2shoes-sheet.jpg",
@@ -380,8 +502,8 @@
                 eraser: "#ffffff",
             },
             draw: "#000000",
-            initial_input: "./inputs/asianF.jpg",
-            initial_output: "./outputs/asianF.jpg",
+            initial_input: "./inputs/blackM.jpg",
+            initial_output: "./outputs/blackM.jpg",
             // sheet_url: "/edges2shoes-sheet.jpg",
         })
 
@@ -396,8 +518,8 @@
                 eraser: "#ffffff",
             },
             draw: "#000000",
-            initial_input: "./inputs/asianF.jpg",
-            initial_output: "./outputs/asianF.jpg",
+            initial_input: "./inputs/blackM.jpg",
+            initial_output: "./outputs/blackM.jpg",
             // sheet_url: "/edges2shoes-sheet.jpg",
         })
 
@@ -413,8 +535,8 @@
                 eraser: "#ffffff",
             },
             draw: "#000000",
-            initial_input: "./inputs/asianF.jpg",
-            initial_output: "./outputs/asianF.jpg",
+            initial_input: "./inputs/whiteM.jpg",
+            initial_output: "./outputs/whiteM.jpg",
             // sheet_url: "/edges2shoes-sheet.jpg",
         })
 
@@ -431,8 +553,8 @@
             draw: "#000000",
             // initial_input: "./inputs/congress.jpg",
             // initial_output: "./outputs/congress.png",
-            initial_input: "./inputs/asianF.jpg",
-            initial_output: "./outputs/asianF.jpg",
+            initial_input: "./inputs/whiteM.jpg",
+            initial_output: "./outputs/whiteM.jpg",
             // sheet_url: "/edges2shoes-sheet.jpg",
         })
 
@@ -471,7 +593,7 @@
 
         create_editor({
             name: "asian-black-lo",
-            weights_url: "/models/black-lo.bin",
+            weights_url: "/models/asian-lo.bin",
             mode: "line",
             clear: "#FFFFFF",
             colors: {
@@ -486,7 +608,7 @@
 
         create_editor({
             name: "asian-black-hi",
-            weights_url: "/models/black-hi.bin",
+            weights_url: "/models/asian-hi.bin",
             mode: "line",
             clear: "#FFFFFF",
             colors: {
@@ -501,39 +623,6 @@
 
         create_editor({
             name: "asian-white-lo",
-            weights_url: "/models/white-lo.bin",
-            mode: "line",
-            clear: "#FFFFFF",
-            colors: {
-                line: "#000000",
-                eraser: "#ffffff",
-            },
-            draw: "#000000",
-            initial_input: "./inputs/whiteM.jpg",
-            initial_output: "./outputs/whiteM.jpg",
-            // sheet_url: "/edges2cats-sheet.jpg",
-        })
-
-        create_editor({
-            name: "asian-white-hi",
-            weights_url: "/models/white-hi.bin",
-            mode: "line",
-            clear: "#FFFFFF",
-            colors: {
-                line: "#000000",
-                eraser: "#ffffff",
-            },
-            draw: "#000000",
-            initial_input: "./inputs/whiteM.jpg",
-            initial_output: "./outputs/whiteM.jpg",
-            // sheet_url: "/edges2cats-sheet.jpg",
-        })
-
-
-
-//--------------------------------------------------whitefilter -------------------------------------//
-        create_editor({
-            name: "white-white-lo",
             weights_url: "/models/asian-lo.bin",
             mode: "line",
             clear: "#FFFFFF",
@@ -548,7 +637,7 @@
         })
 
         create_editor({
-            name: "white-white-hi",
+            name: "asian-white-hi",
             weights_url: "/models/asian-hi.bin",
             mode: "line",
             clear: "#FFFFFF",
@@ -562,38 +651,11 @@
             // sheet_url: "/edges2cats-sheet.jpg",
         })
 
-        create_editor({
-            name: "white-black-lo",
-            weights_url: "/models/black-lo.bin",
-            mode: "line",
-            clear: "#FFFFFF",
-            colors: {
-                line: "#000000",
-                eraser: "#ffffff",
-            },
-            draw: "#000000",
-            initial_input: "./inputs/whiteM.jpg",
-            initial_output: "./outputs/whiteM.jpg",
-            // sheet_url: "/edges2cats-sheet.jpg",
-        })
 
-        create_editor({
-            name: "white-black-hi",
-            weights_url: "/models/black-hi.bin",
-            mode: "line",
-            clear: "#FFFFFF",
-            colors: {
-                line: "#000000",
-                eraser: "#ffffff",
-            },
-            draw: "#000000",
-            initial_input: "./inputs/whiteM.jpg",
-            initial_output: "./outputs/whiteM.jpg",
-            // sheet_url: "/edges2cats-sheet.jpg",
-        })
 
+//--------------------------------------------------white filter -------------------------------------//
         create_editor({
-            name: "white-asian-lo",
+            name: "white-white-lo",
             weights_url: "/models/white-lo.bin",
             mode: "line",
             clear: "#FFFFFF",
@@ -608,7 +670,7 @@
         })
 
         create_editor({
-            name: "white-asian-hi",
+            name: "white-white-hi",
             weights_url: "/models/white-hi.bin",
             mode: "line",
             clear: "#FFFFFF",
@@ -622,12 +684,166 @@
             // sheet_url: "/edges2cats-sheet.jpg",
         })
 
+        create_editor({
+            name: "white-black-lo",
+            weights_url: "/models/white-lo.bin",
+            mode: "line",
+            clear: "#FFFFFF",
+            colors: {
+                line: "#000000",
+                eraser: "#ffffff",
+            },
+            draw: "#000000",
+            initial_input: "./inputs/blackM.jpg",
+            initial_output: "./outputs/blackM.jpg",
+            // sheet_url: "/edges2cats-sheet.jpg",
+        })
+
+        create_editor({
+            name: "white-black-hi",
+            weights_url: "/models/white-hi.bin",
+            mode: "line",
+            clear: "#FFFFFF",
+            colors: {
+                line: "#000000",
+                eraser: "#ffffff",
+            },
+            draw: "#000000",
+            initial_input: "./inputs/blackM.jpg",
+            initial_output: "./outputs/blackM.jpg",
+            // sheet_url: "/edges2cats-sheet.jpg",
+        })
+
+        create_editor({
+            name: "white-asian-lo",
+            weights_url: "/models/white-lo.bin",
+            mode: "line",
+            clear: "#FFFFFF",
+            colors: {
+                line: "#000000",
+                eraser: "#ffffff",
+            },
+            draw: "#000000",
+            initial_input: "./inputs/asianF.jpg",
+            initial_output: "./outputs/asianF.jpg",
+            // sheet_url: "/edges2cats-sheet.jpg",
+        })
+
+        create_editor({
+            name: "white-asian-hi",
+            weights_url: "/models/white-hi.bin",
+            mode: "line",
+            clear: "#FFFFFF",
+            colors: {
+                line: "#000000",
+                eraser: "#ffffff",
+            },
+            draw: "#000000",
+            initial_input: "./inputs/asianF.jpg",
+            initial_output: "./outputs/asianF.jpg",
+            // sheet_url: "/edges2cats-sheet.jpg",
+        })
+
         hideAllFilter()
 
 
 
 
         window.requestAnimationFrame(frame)
+
+
+//--------------------------------------------------black filter -------------------------------------//
+        create_editor({
+            name: "black-asian-lo",
+            weights_url: "/models/black-lo.bin",
+            mode: "line",
+            clear: "#FFFFFF",
+            colors: {
+                line: "#000000",
+                eraser: "#ffffff",
+            },
+            draw: "#000000",
+            initial_input: "./inputs/asianF.jpg",
+            initial_output: "./outputs/asianF.jpg",
+            // sheet_url: "/edges2cats-sheet.jpg",
+        })
+
+        create_editor({
+            name: "black-asian-hi",
+            weights_url: "/models/black-hi.bin",
+            mode: "line",
+            clear: "#FFFFFF",
+            colors: {
+                line: "#000000",
+                eraser: "#ffffff",
+            },
+            draw: "#000000",
+            initial_input: "./inputs/asianF.jpg",
+            initial_output: "./outputs/asianF.jpg",
+            // sheet_url: "/edges2cats-sheet.jpg",
+        })
+
+        create_editor({
+            name: "black-black-lo",
+            weights_url: "/models/black-lo.bin",
+            mode: "line",
+            clear: "#FFFFFF",
+            colors: {
+                line: "#000000",
+                eraser: "#ffffff",
+            },
+            draw: "#000000",
+            initial_input: "./inputs/blackM.jpg",
+            initial_output: "./outputs/blackM.jpg",
+            // sheet_url: "/edges2cats-sheet.jpg",
+        })
+
+        create_editor({
+            name: "black-black-hi",
+            weights_url: "/models/black-hi.bin",
+            mode: "line",
+            clear: "#FFFFFF",
+            colors: {
+                line: "#000000",
+                eraser: "#ffffff",
+            },
+            draw: "#000000",
+            initial_input: "./inputs/blackM.jpg",
+            initial_output: "./outputs/blackM.jpg",
+            // sheet_url: "/edges2cats-sheet.jpg",
+        })
+
+        create_editor({
+            name: "black-white-lo",
+            weights_url: "/models/black-lo.bin",
+            mode: "line",
+            clear: "#FFFFFF",
+            colors: {
+                line: "#000000",
+                eraser: "#ffffff",
+            },
+            draw: "#000000",
+            initial_input: "./inputs/whiteM.jpg",
+            initial_output: "./outputs/whiteM.jpg",
+            // sheet_url: "/edges2cats-sheet.jpg",
+        })
+
+        create_editor({
+            name: "black-white-hi",
+            weights_url: "/models/black-hi.bin",
+            mode: "line",
+            clear: "#FFFFFF",
+            colors: {
+                line: "#000000",
+                eraser: "#ffffff",
+            },
+            draw: "#000000",
+            initial_input: "./inputs/whiteM.jpg",
+            initial_output: "./outputs/whiteM.jpg",
+            // sheet_url: "/edges2cats-sheet.jpg",
+        })
+
+
     }
 
 
