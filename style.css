@@ -32,9 +32,9 @@ canvas {
 }
 
 
-#equal-hi, #black-hi, #black-lo, #asian-hi, #asian-lo, #white-hi, #white-lo, #congress-hi, #proportional-hi {
-  margin: auto;
-  text-align:center
+.drawing, #asian-asian-hi, #equal-hi, #black-hi, #black-lo, #asian-hi, #asian-lo, #white-hi, #white-lo, #congress-hi, #proportional-hi {
+  margin: auto !important;
+  text-align:center !important;
 
 }
 
