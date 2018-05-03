@@ -1,6 +1,18 @@
 <html>
 
+
+<head>
+  <title>Face2Race</title>
+<!--   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+
+
 <body>
+  
+  <h1>Face2Race<h1>
+    <span class="custom-dropdown small">
     <select id="mySelect" onchange="show()">
         <option value=all>All</option>
         <option value="equal">Equal</option>
@@ -9,6 +21,9 @@
         <option value="black">Black</option>
         <option value="white">White</option>
     </select>
+    </span>
+
+
     <h2>Equally Distributed</h2>
     <div id="equal"></div>
     <h2>Proportional to the US</h2>
@@ -81,7 +96,7 @@
 
 
     var editor_background = new Image()
-    editor_background.src = "editor.png"
+    editor_background.src = "editor1.png"
 
     var DEBUG = false
     var SIZE = 256
@@ -531,9 +546,9 @@
                             v.ctx.fillStyle = rgba([0.5, 0.5, 0.5, 1.0])
                             v.ctx.stroke()
                             v.ctx.restore()
-                            v.ctx.font = "bold 8pt Arial"
+                            v.ctx.font = "bold 8pt Futura"
                         } else {
-                            v.ctx.font = "8pt Arial"
+                            v.ctx.font = "8pt Futura"
                         }
 
                         v.ctx.fillText(name, v.f.width - v.ctx.measureText(name).width - 26, 10)
@@ -1013,7 +1028,7 @@
         }
 
         if (request_in_progress) {
-            animate(name, parse_color("#aaaaaaFF"), 100)
+            animate(name, parse_color("#aaaaaFF"), 100)
         } else if (mouse_down && v.contains(mouse_pos)) {
             animate(name, parse_color("#FF0000FF"), 50)
         } else {
@@ -1040,8 +1055,8 @@
         v.ctx.fill()
         v.ctx.restore()
 
-        v.ctx.font = "16px Arial"
-        v.ctx.fillStyle = "#f8f8f8"
+        v.ctx.font = "16px Futura"
+        v.ctx.fillStyle = "#FFFFFF"
         v.center_text(text)
 
         if (request_in_progress) {
@@ -1168,10 +1183,10 @@
 
     var parse_color = function(c) {
         return [
-            parseInt(c.substr(1, 2), 16) / 255,
-            parseInt(c.substr(3, 2), 16) / 255,
-            parseInt(c.substr(5, 2), 16) / 255,
-            parseInt(c.substr(7, 2), 16) / 255,
+            parseInt(c.substr(1, 2), 0) / 255,
+            parseInt(c.substr(3, 2), 0) / 255,
+            parseInt(c.substr(5, 2), 0) / 255,
+            parseInt(c.substr(7, 2), 0) / 255,
         ]
     }
 
